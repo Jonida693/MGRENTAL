@@ -167,7 +167,7 @@ const SearchCars = () => {
           </div>
 
           {/* Pick-up row */}
-          <div className="flex border-b-2 border-black-400">
+          <div className="flex border-b-2 border-black-400 ">
             <DateField label="Pick-up date"  value={pickupDate}  onChange={setPickupDate} />
             <TimeField label="Time"          value={pickupTime}  onChange={setPickupTime} border={false} />
           </div>
