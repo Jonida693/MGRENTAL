@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
+import { HashRouter as Router, Routes, Route, Outlet, useSearchParams } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import SearchCars from "./components/SearchCars";
@@ -20,6 +20,12 @@ function Layout() {
 }
 
 function HomePage() {
+  const [params] = useSearchParams();
+  const hasSearch = params.get("pickupDate") || params.get("pickupTime") || params.get("dropoffDate") || params.get("dropoffTime");
+
+  // If search params exist, render the results view while keeping the URL at `/`
+  if (hasSearch) return <ResultsPage />;
+
   return (
     <>
       <SearchCars />
@@ -32,14 +38,14 @@ function HomePage() {
 
 function App() {
   return (
-    <BrowserRouter>
+    <Router>
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<HomePage />} />
           <Route path="/results" element={<ResultsPage />} />
         </Route>
       </Routes>
-    </BrowserRouter>
+    </Router>
   );
 }
 

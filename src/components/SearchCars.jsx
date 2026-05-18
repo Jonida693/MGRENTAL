@@ -110,7 +110,8 @@ const SearchCars = () => {
   const [dropoffTime, setDropoffTime] = useState(formatTimeValue());
 
   const handleSearch = () => {
-    navigate(`/results?pickupDate=${pickupDate}&pickupTime=${pickupTime}&dropoffDate=${dropoffDate}&dropoffTime=${dropoffTime}`);
+    // keep the path at `/` so reload won't 404 on static hosting
+    navigate(`/?pickupDate=${pickupDate}&pickupTime=${pickupTime}&dropoffDate=${dropoffDate}&dropoffTime=${dropoffTime}`);
   };
   
 
